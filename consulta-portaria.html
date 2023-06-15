@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Consulta Portaria</title>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link rel="stylesheet" href="CSS/visualizar.css">
+        <link rel="stylesheet" href="CSS/consulta-portaria.css">
+        <link rel="shortcut icon" href="Images/Logo P.png">
+    </head>
+    <body>
+
+      <link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
+      <nav class="hide">
+        <button type="button" id="toggle-btn">
+          <i class="fa fa-bars"></i>
+        </button>
+        <ul class="sidebar-menu">
+          <img src="Images/logoBranco.png" style="margin:0 auto; width: 200px; pointer-events: none;" alt="">
+    
+          <li id="solicitacao"><a href="solicitacao.html"><i class="fa-solid fa-user-plus"></i>Solicitação</a></li>
+          <li id="consulta"><a href="consulta.html"><i class="fa-solid fa-magnifying-glass"></i>Consulta</a></li>
+          <li id="consultaPortaria"><a href="consulta-portaria.html"><i class="fa-solid fa-magnifying-glass"></i>Portaria</a></li>
+          <li id="aprovacao"><a href="aprovacao.html"><i class="fa-solid fa-user-check"></i>Aprovação</a></li>
+          <li id="historico"><a href="historico.html"><i class="fa-sharp fa-regular fa-clock"></i>Histórico</a></li>
+          <li id="nomeUsuario"></li><a href="login.html"><i class="fa-solid fa-right-to-bracket" id="icone"></i></a>
+          <li id="cargo"></li>
+        </ul>
+      </nav>
+    
+      <script>
+        const nav = document.querySelector('nav');
+    const toggle_btn = document.getElementById('toggle-btn');
+    const content = document.querySelector('section');
+    
+    toggle_btn.onclick = function() {
+        nav.classList.toggle('hide');
+        content.classList.toggle('expand');
+    };
+    
+    const body = document.querySelector('body');
+    const bgModeBtn = document.getElementById('bgModeBtn');
+    const bgModeIcon = document.getElementById('bgModeIcon');
+    const sectionHeader = document.querySelector('section h1');
+    
+    bgModeBtn.onclick = function(){
+        body.classList.toggle("dark-mode");
+        bgModeIcon.classList.toggle("fa-sun-o");
+        bgModeIcon.classList.toggle("fa-moon-o");
+        sectionHeader.classList.toggle("dark-mode");
+    } 
+      </script>
+
+        
+       <header>
+            <h1 style="color: #f58634; font-weight: bold; text-align: center; user-select: none;">Consulta de Visitantes</h1>
+            <hr>
+              <div class="contador">
+                <p class="texto">Total de visitantes cadastrados: <span id="count-total"></span></p>
+              </div>
+            </div>
+            <div class="pesquisa">
+              <input class="input-pesquisa" type="text" id="input-busca" placeholder="O que você procura?" >
+              <select id="selectFiltro" class="filtro">
+                  <option selected>Procurar Por: Nome</option>
+                  <option>Procurar Por: Data</option>
+                  <option>Procurar Por: Empresa</option>
+                  <option>Procurar Por: Solicitante</option>
+                  <option>Procurar Por: Status</option>
+
+              </select>
+          </div>  
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Data da Visita</th>
+                        <th>Nome</th>
+                        <th>Empresa</th>
+                        <th>Solicitante</th>
+                        <th>Status</th>
+                        <th>Visita</th>
+                        <th>Aprovado/Rej. Por</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+            </table>
+                <section id="sectionRegistro">
+ <!--   <tbody id="tabela-func">
+                    <tr>
+                        <td>01/02/2023</td>
+                        <td>Caio Garcia</td>
+                        <td>Paranóa</td>
+                        <td>Crislaine Garcia</td>
+                        <td>Aprovado</td>
+                        <td>Cristiane Alves</td>
+                        <td>
+                            <a href="visualizar.html"><button class="btn btn-sm btn-warning">Visualizar</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+-->
+
+                </section>
+
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            
+              <div class="container">                  
+                    <div class="max-width">
+                        
+                      <div class="imageContainer">
+                          <img id="imgPhoto">
+                      </div>
+                  </div>
+                  
+                  
+                  <main action="#">
+                    <div id="modalFoto" class="modalFoto">
+                      <div class="modalFoto-content">
+                        <section class="section-two" id="fotoGeral">
+                          <img id="fotoModal">
+                        </section>
+                      </div>
+                    </div>  
+                   
+
+                    <div id="modalCamera" class="modalFoto">
+                      <div class="modalCamera-content">
+                        <video  id="video" autoplay></video>
+                            <canvas style="display: none;" id="canvasFoto" ></canvas>
+                            <div class="funcoes">
+                            <button id="tirarFoto">Tirar Foto</button>
+                            <button id="retirarFoto">Tirar Novamente</button>
+                            <button id="fecharCamera">Fechar camera</button>
+                            </div>
+                          </div>
+                        </section>
+                        
+                      </div>
+                    
+                    <button id="abrirCamera">Abrir Camera</button>
+                    
+                      <div class="form first">
+                          <div class="details personal">
+                              <h3 style="margin-bottom: 20px; color:#f58634;">INFORMAÇÕES GERAIS 
+                                <box-icon id="abre" name='time-five'></box-icon>
+                                </h3>
+                              <div class="fields">
+                                  <div class="input-field">
+                                    <label>Data do Cadastro</label>
+                                    <input id="dataRegistro" type="text" disabled>
+                                </div>
+              
+                                  <div class="input-field">
+                                      <label>Hora da Entrada</label>
+                                      <input id="entrada" type="time" >
+                                  </div>
+                              
+                                  <div class="input-field">
+                                      <label>Hora da Saída</label>
+                                      <input id="saida" type="time" >
+                                  </div>
+                                  <div class="input-field">
+                                      <label>Periodo de:</label>
+                                      <input id="periodoDe" type="text">
+                                  </div>
+                                  <div class="input-field">
+                                      <label>Periodo Até:</label>
+                                      <input id="periodoAte" type="text">
+      
+                                  </div>
+              
+                                  <div class="input-field">
+                                    <label>Tipo do Cadastro</label>
+                                    <input id="tipo_cadastro" type="text" placeholder="Pré-Cadastro/Efetivo" disabled>
+                                </div>
+                               
+              
+                                  <div class="input-field">
+                                      <label>Nome Completo</label>
+                                      <input id="nomeVisitante" type="text" placeholder="Digite o Nome" >
+      
+                                  </div>
+                                  
+              
+                                  <div class="input-field">
+                                      <label>RG</label>
+                                      <input id="rg" type="text" placeholder="Digite o RG">
+      
+                                  </div>
+              
+                                  <div class="input-field">
+                                      <label>CPF</label>
+      
+                                      <input id="cpf" type="text" placeholder="Digite o CPF" disabled>
+      
+                                  </div>
+              
+                                  <div class="input-field">
+                                      <label>Celular</label>
+                                      <input id="celular" type="text" placeholder="Digite o Celular">
+      
+                                  </div>
+              
+                                  <div class="input-field">
+                                      <label>E-Mail</label>
+                                      <input id="emailVisitante" type="email" placeholder="Digite o E-Mail">
+      
+                                  </div>
+                      
+                                  <div class="input-field">
+                                      <label>Empresa</label>
+                                      <input id="empresaVisitante" type="text" placeholder="Digite a Empresa">
+                                  </div>
+      
+                                  <div class="input-field">
+                                      <label>Quem Visitar</label>
+                                      <input id="responsavelVisita" type="text" placeholder="Solicitante">
+                                  </div>
+      
+                                  <div class="input-field">
+                                      <label>Área que irá vistar</label>
+                                      <input id="setor" type="text" placeholder="Digite a Área Visitada">
+                                  </div>
+      
+                                  <div class="input-field">
+                                    <label>Acesso a Fábrica</label>
+                                    <select id="acesso_fabrica">
+                                      <option selected>Selecione uma opção</option>
+                                      <option>Sim</option>
+                                      <option>Não</option>
+                      
+                                    </select>
+                                  </div>
+                                  <div class="input-field">
+                                    <label>Acesso ao Estacionamento</label>
+                                    <select  id="estacionamento">
+                                      <option value="" disabled selected>Selecione uma opção</option>
+                                      <option value="Sim">Sim</option>
+                                      <option value="Não">Não</option>
+                      
+                                    </select>
+                                  </div>
+      
+                                  <div class="input-field">
+                                      <label>Placa do Carro</label>
+                                      <input id="placa_carro" type="text" placeholder="Digite a Placa do Carro">
+                                  </div>
+      
+                                  <div class="input-field">
+                                      <label>Modelo do Carro</label>
+                                      <input id="modelo_carro" type="text" placeholder="Digite o Modelo do Carro">
+                                  </div>
+                                  <div class="input-field">
+                                    <label>Aprovado/Rejeitado Por</label>
+                                    <input id="aprov_rej" type="text" placeholder="" disabled>
+                                </div> 
+                                <div class="input-field">
+                                  <label>Status</label>
+                                  <input id="status" type="text" placeholder="" disabled>
+                                  </div>
+                                  <div class="input-field">
+                                  <button id="updateBtn">SALVAR</button>
+                                  </div>
+
+                                <div class="input-field">
+                                      <label>Observação</label>
+                                      <textarea id="story" name="story" >
+                                    </textarea>
+                                    </div>
+                                  </div>                       
+                                </div>   
+                      </div>     
+          </div>
+          
+        </div>
+        
+      </main>
+      
+        <script>
+
+          const estacionamento = document.getElementById("estacionamento");
+          const placa_carro = document.getElementById("placa_carro");
+          const modelo_carro= document.getElementById("modelo_carro");
+
+          estacionamento.addEventListener("change", function () {
+            const selectedOption = estacionamento.value;
+
+            if (selectedOption === "Sim") {
+              // Habilite o input 1 e o input 2 se a opção 1 for selecionada
+              placa_carro.disabled = false;
+              modelo_carro.disabled = false;
+            } else {
+              // Desative o input 1 e o input 2 se a opção 2 ou nenhuma opção for selecionada
+
+              placa_carro.disabled = true;
+              modelo_carro.disabled = true;
+            }
+          });
+
+        </script>
+
+        <div id="mod" class="mod">
+          <div id="mod2" class="mod-content">
+            <span class="close">&times;</span>
+            <table class="table-dentro">
+                  <thead>
+                    <tr>
+                      <th>Data da Visita</th>
+                      <th>Hora de Entrada</th>
+                      <th>Hora de Saída</th>
+                      <th>Empresa</th>
+                    </tr>
+                  </thead>
+                  </tbody>
+                </table>
+              
+            
+            <section class="section-two" id="registros-${cpf}">
+
+            </section>
+          </div>
+        </div>       
+     
+        <script src="firebase/consulta-portaria.js" type="module"></script>
+        <script src="js/foto.js"></script>
+    </body>
+</html>

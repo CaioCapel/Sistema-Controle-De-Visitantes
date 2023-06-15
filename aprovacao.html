@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/aprovacao.css">
+    <link rel="stylesheet" href="CSS/visualizar.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=devi  ce-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="Images/Logo P.png" >
+     <title>Aprovação de Visita</title>
+   </head>
+<body>  
+  
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <nav class="hide">
+    <button type="button" id="toggle-btn">
+      <i class="fa fa-bars"></i>
+    </button>
+    <ul class="sidebar-menu">
+      <img src="Images/logoBranco.png" style="margin:0 auto; width: 200px; pointer-events: none;" alt="">
+
+      <li id="solicitacao"><a href="solicitacao.html"><i class="fa-solid fa-user-plus"></i>Solicitação</a></li>
+      <li id="consulta"><a href="consulta.html"><i class="fa-solid fa-magnifying-glass"></i>Consulta</a></li>
+      <li id="consultaPortaria"><a href="consulta-portaria.html"><i class="fa-solid fa-magnifying-glass"></i>Portaria</a></li>
+      <li id="aprovacao"><a href="aprovacao.html"><i class="fa-solid fa-user-check"></i>Aprovação</a></li>
+      <li id="historico"><a href="historico.html"><i class="fa-sharp fa-regular fa-clock"></i>Histórico</a></li>
+      <li id="cargo"></li>
+      <li id="nomeUsuario"></li><a href="login.html"><i class="fa-solid fa-right-to-bracket" id="icone"></i></a>
+    </ul>
+  </nav>
+
+ 
+
+  <script>
+    const nav = document.querySelector('nav');
+const toggle_btn = document.getElementById('toggle-btn');
+const content = document.querySelector('section');
+
+toggle_btn.onclick = function() {
+    nav.classList.toggle('hide');
+    content.classList.toggle('expand');
+};
+
+const body = document.querySelector('body');
+const bgModeBtn = document.getElementById('bgModeBtn');
+const bgModeIcon = document.getElementById('bgModeIcon');
+const sectionHeader = document.querySelector('section h1');
+
+bgModeBtn.onclick = function(){
+    body.classList.toggle("dark-mode");
+    bgModeIcon.classList.toggle("fa-sun-o");
+    bgModeIcon.classList.toggle("fa-moon-o");
+    sectionHeader.classList.toggle("dark-mode");
+} 
+  </script>
+   <!--Corpo da Página-->
+
+
+   <h1 class="text">Aprovação de Visitantes</h1>
+
+<section class="dashboard">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+
+    </div>
+
+   
+
+    <div class="main-cards">
+
+      <div class="card">
+        <div class="card-inner">
+          <p class="text-primary">Total de Solicitações</p>
+          <span class="material-icons-outlined text-blue"></span>
+        </div>
+        <span id="count-total"></span>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <p class="text-primary">Solicitações Pendentes</p>
+          <span class="material-icons-outlined text-orange"></span>
+        </div>
+        <span id="count-pendente"></span>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <p class="text-primary">Solicitações Aprovadas</p>
+          <span class="material-icons-outlined text-green"></span>
+        </div>
+        <span id="count-aprovada"></span>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <p class="text-primary">Solicitações Rejeitadas</p>
+          <span class="material-icons-outlined text-red"></span>
+        </div>
+        <span id="count-negada"></span>
+      </div>
+
+    </div>
+  </main>
+  
+        <div class="title">
+            <i class="uil uil-clock"></i>
+
+  
+   <h1 class="titulo">Solicitações de Hoje</h1>
+      
+  </div>
+  <hr>      
+      
+  <table class="table2">
+    <thead>
+      <tr>
+       <th>Data da Visita</th>
+       <th>Nome</th>
+       <th>Empresa</th>
+       <th>Solicitante</th>
+       <th>Periodo De:</th>
+       <th>Periodo Até:</th>
+       <th>Ações</th>
+      </tr>
+    </thead>
+</table>
+      
+    <section id="sectionRegistro" >
+<!--
+            <tbody id="tabela-func">
+              <tr>
+                <td> <a href="visualizar.html"><img class="img-table" src="Images/olho.png" alt=""></a></td>
+                  <td>1</td>
+                  <td>Caio Garcia</td>
+                  <td>Paranóa</td>
+                  <td>Crislaine Garcia</td>
+                  <td>--:--</td>
+                  <td>--:--</td>
+                  <td>
+                    
+                      <button class="btn">APROVAR</button>
+                      <button class="btn2">REJEITAR</button>
+                     
+                  </td>
+              </tr>
+             
+          </tbody>
+      </thead>
+  -->
+
+  
+  </section>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+            
+      <div class="container">                  
+            <div class="max-width">
+                
+              <div class="imageContainer">
+                  <img id="imgPhoto">
+              </div>
+          </div>
+          <main action="#">
+            <div id="modalFoto" class="modalFoto">
+              <div class="modalFoto-content">
+                <section class="section-two" id="fotoGeral">
+                  <img id="fotoModal">
+                </section>
+              </div>
+            </div>  
+            
+           <input type="file" id="flImage" name="fImage" accept="image/*">
+           
+            <main action="#">
+                <div class="form first">
+                    <div class="details personal">
+                        <h3 style="margin-bottom: 20px; color:#f58634;">INFORMAÇÕES GERAIS</h3>
+        
+                        <div class="fields">
+                            <div class="input-field">
+                              <label>Data do Cadastro</label>
+                              <input id="dataRegistro" type="text" disabled>
+                          </div>
+        
+                            <div class="input-field">
+                                <label>Hora da Entrada</label>
+                                <input id="entrada" type="time" disabled>
+                            </div>
+                            <div class="input-field">
+                                <label>Hora da Saída</label>
+                                <input id="saida" type="time" disabled>
+                            </div>
+                            <div class="input-field">
+                                <label>Periodo de:</label>
+                                <input id="periodoDe" type="text" disabled>
+                            </div>
+                            <div class="input-field">
+                                <label>Periodo Até:</label>
+                                <input id="periodoAte" type="text" disabled>
+
+                            </div>
+        
+                            <div class="input-field">
+                              <label>Tipo do Cadastro</label>
+                              <input id="tipo_cadastro" type="text" placeholder="Pré-Cadastro/Efetivo" disabled>
+                          </div>
+                         
+        
+                            <div class="input-field">
+                                <label>Nome Completo</label>
+                                <input id="nomeVisitante" type="text" placeholder="Digite o Nome" disabled>
+
+                            </div>
+                            
+        
+                            <div class="input-field">
+                                <label>RG</label>
+                                <input id="rg" type="text" placeholder="Digite o RG" disabled>
+
+                            </div>
+        
+                            <div class="input-field">
+                                <label>CPF</label>
+
+                                <input id="cpf" type="text" placeholder="Digite o CPF" disabled>
+
+                            </div>
+        
+                            <div class="input-field">
+                                <label>Celular</label>
+                                <input id="celular" type="text" placeholder="Digite o Celular" disabled>
+
+                            </div>
+        
+                            <div class="input-field">
+                                <label>E-Mail</label>
+                                <input id="emailVisitante" type="email" placeholder="Digite o E-Mail" disabled>
+
+                            </div>
+                
+                            <div class="input-field">
+                                <label>Empresa</label>
+                                <input id="empresaVisitante" type="text" placeholder="Digite a Empresa" disabled>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Quem Visitar</label>
+                                <input id="responsavelVisita" type="text" placeholder="Digite a Empresa" disabled>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Área  que irá vistar</label>
+                                <input id="setor" type="text" placeholder="Digite a Empresa" disabled>
+                            </div>
+
+                            <div class="input-field">
+                              <label>Acesso a Fábrica</label>
+                              <select id="acesso_fabrica" disabled>
+                                <option selected>Selecione uma opção</option>
+                                <option>Sim</option>
+                                <option>Não</option>
+                
+                              </select>
+                            </div>
+                            <div class="input-field">
+                              <label>Acesso ao Estacionamento</label>
+                              <select  id="estacionamento" disabled>
+                                <option value="" disabled selected>Selecione uma opção</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                
+                              </select>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Placa do Carro</label>
+                                <input id="placa_carro" type="text" placeholder="Digite a Placa do Carro" disabled>
+                            </div>
+
+                            <div class="input-field">
+                                <label>Modelo do Carro</label>
+                                <input id="modelo_carro" type="text" placeholder="Digite o Modelo do Carro" disabled>
+                            </div>
+
+                            <div class="input-field">
+                              <label>Aprovado/Rejeitado Por</label>
+                              <input id="aprov_rejPor" type="text" placeholder="" disabled>
+                          </div> <div class="input-field">
+                            <label>Andamento da Visita</label>
+                            <input id="andamento_visita" type="text" placeholder="" disabled>
+                        </div> <div class="input-field">
+                          <label>Status</label>
+                          <input id="status" type="text" placeholder="" disabled>
+                      </div>
+        
+                              <div class="input-field">
+                                <label>Observação</label>
+                                <textarea id="story" name="story" disabled>
+                              </textarea>
+                              
+                             
+                            
+                              </div>
+                            </div>                       
+                          </div>   
+                </div>     
+    </div>
+    
+  </div>
+  
+</main>
+  <script>
+
+    const estacionamento = document.getElementById("estacionamento");
+    const placa_carro = document.getElementById("placa_carro");
+    const modelo_carro= document.getElementById("modelo_carro");
+
+    estacionamento.addEventListener("change", function () {
+      const selectedOption = estacionamento.value;
+
+      if (selectedOption === "Sim") {
+        // Habilite o input 1 e o input 2 se a opção 1 for selecionada
+        placa_carro.disabled = false;
+        modelo_carro.disabled = false;
+      } else {
+        // Desative o input 1 e o input 2 se a opção 2 ou nenhuma opção for selecionada
+
+        placa_carro.disabled = true;
+        modelo_carro.disabled = true;
+      }
+    });
+
+  </script>
+
+
+
+<script type="module" src="firebase/aprovacao.js"></script>
+</body>
+</html>

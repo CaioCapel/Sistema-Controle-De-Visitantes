@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <link rel="shortcut icon" href="Images/Logo P.png">
+    <link rel="stylesheet" href="CSS/historico.css">
+    <title>Histórico</title>
+
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <nav class="hide">
+        <button type="button" id="toggle-btn">
+            <i class="fa fa-bars"></i>
+        </button>
+        <ul class="sidebar-menu">
+            <img src="Images/logoBranco.png" style="margin:0 auto; width: 200px; pointer-events: none;" alt="">
+
+            <li id="solicitacao"><a href="solicitacao.html"><i class="fa-solid fa-user-plus"></i>Solicitação</a></li>
+            <li id="consulta"><a href="consulta.html"><i class="fa-solid fa-magnifying-glass"></i>Consulta</a></li>
+            <li id="consultaPortaria"><a href="consulta-portaria.html"><i class="fa-solid fa-magnifying-glass"></i>Portaria</a></li>
+            <li id="aprovacao"><a href="aprovacao.html"><i class="fa-solid fa-user-check"></i>Aprovação</a></li>
+            <li id="historico"><a href="historico.html"><i class="fa-sharp fa-regular fa-clock"></i>Histórico</a></li>
+            <li id="nomeUsuario"></li><a href="login.html"><i class="fa-solid fa-right-to-bracket" id="icone"></i></a>
+            <li id="cargo"></li>
+        </ul>
+    </nav>
+    <section>
+    </section>
+
+
+
+    <script>
+        const nav = document.querySelector('nav');
+        const toggle_btn = document.getElementById('toggle-btn');
+        const content = document.querySelector('section');
+
+        toggle_btn.onclick = function () {
+            nav.classList.toggle('hide');
+            content.classList.toggle('expand');
+        };
+
+    </script>
+
+    <header>
+        <h1 >Histórico de Visitantes</h1>
+        <hr>
+    </header>
+    <button id="btn1">Exportar para Excel</button>
+
+    <div class="pesquisa">
+        <input class="input-pesquisa" type="text" id="input-busca" placeholder="O que você procura?" >
+    </div>
+    <div class="container">
+
+        <div id="divTabela">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Visita</th>
+                        <th>Horário de Entrada</th>
+                        <th>Horário de Saída</th>
+                    </tr>
+                </thead>
+            </table>
+            <section id="sectionHistorico">
+                <!--
+                        <tbody>
+                            <tr>
+                                <td>João Silva</td>
+                                <td>01/01/2023</td>
+                                <td>14:30</td>
+                                <td>14:30</td>
+                            </tr>
+                            
+                    </tbody>
+                    -->
+            </section>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+        
+        $("#btn1").click(function(e){
+        e.preventDefault();
+
+        var wb = XLSX.utils.table_to_book(document.getElementById('divTabela'), { sheet: "SheetJS" });
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+        function s2ab(s) {
+          var buf = new ArrayBuffer(s.length);
+          var view = new Uint8Array(buf);
+          for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+          return buf;
+        }
+
+        var divTabela = document.getElementById('divTabela');
+        var Dados = new Blob(['\ufeff' + divTabela.outerHTML], {type:'application/vnd.ms-excel'});
+        var url = window.URL.createObjectURL(Dados);
+        
+        var a = document.createElement('a');
+
+        a.href = url;
+
+        a.download = 'Visitas'
+
+        a.click();
+
+        });
+
+        });
+   
+    </script>
+    <script src="firebase/historico.js" type="module"></script>
+    
+
+</body>
+
+</html>

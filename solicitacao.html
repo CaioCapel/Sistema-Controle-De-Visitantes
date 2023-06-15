@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="CSS/solicitacao.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="shortcut icon" href="Images/Logo P.png">
+  <title>Solicitação de Visita</title>
+</head>
+
+<body>
+
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script type="text/javascript">
+  (function () {
+ 
+  })();
+</script>
+  
+  <nav class="hide">
+    <button type="button" id="toggle-btn">
+      <i class="fa fa-bars"></i>
+    </button>
+    <ul class="sidebar-menu">
+      <img src="Images/logoBranco.png" style="margin:0 auto; width: 200px; pointer-events: none;" alt="">
+
+      <li><a href="solicitacao.html"><i class="fa-solid fa-user-plus"></i>Solicitação</a></li>
+      <li id="consulta"><a href="consulta.html"><i class="fa-solid fa-magnifying-glass"></i>Consulta</a></li>
+      <li id="consultaPortaria"><a href="consulta-portaria.html"><i class="fa-solid fa-magnifying-glass"></i>Portaria</a></li>
+      <li id="aprovacao"><a href="aprovacao.html"><i class="fa-solid fa-user-check"></i>Aprovação</a></li>
+      <li id="historico"><a href="historico.html"><i class="fa-sharp fa-regular fa-clock"></i>Histórico</a></li>
+      <li id="nomeUsuario"></li>
+      <li id="cargo"></li>
+
+      <a href="login.html"><i class="fa-solid fa-right-to-bracket" id="icone"></i></a>
+    </ul>
+    
+  </nav>
+  <section>
+  </section>
+
+ 
+
+  <script>
+    const nav = document.querySelector('nav');
+const toggle_btn = document.getElementById('toggle-btn');
+const content = document.querySelector('section');
+
+toggle_btn.onclick = function() {
+    nav.classList.toggle('hide');
+    content.classList.toggle('expand');
+};
+  </script>
+  <div class="container">
+    <header>Solicitação de Visitantes</header>
+    <main> 
+      <div class="form first">
+        <div class="details personal">
+          <span class="title">Informações Pessoais</span>
+          <div class="fields">
+            <div class="input-field">
+              <label>Nome Completo<p style="display: inline-block; color: red; ">*</p></label>
+              <input id="nome" type="text" placeholder="Digite o Nome" required>
+            </div>
+            <div class="input-field">
+              <label>RG</label>
+              <input id="rg" type="text" placeholder="Digite o RG">
+            </div>
+            <div class="input-field2">
+              <label>CPF<p style="display: inline-block; color: red; ">*</p></label>
+              <div class="input-group">
+                <input id="cpf" type="text" placeholder="Digite o CPF" required>
+                <button id="buscarVisitante" class="button-field">Buscar</button>
+              </div>
+            </div>
+            <div class="input-field">
+              <label>Telefone</label>
+              <input id="telefone" type="tel" placeholder="Digite o Telefone">
+            </div>
+            <div class="input-field">
+              <label>Celular</label>
+              <input id="celular" type="tel" placeholder="Digite o celular">
+            </div>
+            <div class="input-field">
+              <label>E-mail</label>
+              <input id="emailVisitante" type="email" placeholder="Digite o E-mail">
+            </div>
+            <div class="input-field">
+              <label>Período da visita De<p style="display: inline-block; color: red; ">*</p></label>
+              <input id="periodoDe" type="text" placeholder="Digite o Período" required>
+            </div>
+            <div class="input-field">
+              <label>Período da visita Até<p style="display: inline-block; color: red; ">*</p></label>
+              <input id="periodoAte" type="text" placeholder="Digite o Período" required>
+            </div>
+          
+          <span class="title">Detalhes da Visita</span>
+
+            <div class="input-field">
+              <label>Empresa<p style="display: inline-block; color: red; ">*</p></label>
+              <input id="empresa" type="text" placeholder="Digite a Empresa" required>
+            </div>
+            <div class="input-field">
+              <label>Quem Visitar<p style="display: inline-block; color: red; ">*</p></label>
+              <input id="responsavelVisita" type="text" placeholder="Digite seu nome" required>
+            </div>
+            <div class="input-field">
+              <label>Área que irá visitar</label>
+              <input id="setor" type="text" placeholder="Digite a área">
+            </div>
+            <div class="input-field">
+              <label>Acesso a Fábrica</label>
+              <select id="acesso_fabrica">
+                <option disabled selected>Selecione uma opção</option>
+                <option>Sim</option>
+                <option>Não</option>
+              </select>
+            </div>
+            <div class="input-field" >
+              <label>Acesso ao Estacionamento</label>
+              <select  id="mySelect">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="placa_carro">Placa do Carro</label>
+              <input type="text" id="placa_carro" disabled>
+            </div>
+            <div class="input-field">
+              <label for="modelo_carro">Modelo do Carro</label>
+              <input type="text" id="modelo_carro" disabled>
+            </div>
+            <div class="input-field">
+              <label>Observação</label>
+              <textarea  id="observacao" name="story">
+            </textarea>
+            </div>
+
+            <script>
+              const mySelect = document.getElementById("mySelect");
+              const placa_carro = document.getElementById("placa_carro");
+              const modelo_carro= document.getElementById("modelo_carro");
+
+              mySelect.addEventListener("change", function () {
+                const selectedOption = mySelect.value;
+
+                if (selectedOption === "Sim") {
+                  // Habilite o input 1 e o input 2 se a opção 1 for selecionada
+                  placa_carro.disabled = false;
+                  modelo_carro.disabled = false;
+                } else {
+                  // Desative o input 1 e o input 2 se a opção 2 ou nenhuma opção for selecionada
+
+                  placa_carro.disabled = true;
+                  modelo_carro.disabled = true;
+                }
+              });
+
+            </script>
+
+          <button class="btn solid" id='enviarSolici' value="Enviar" disabled> Enviar </button>
+
+          </div>
+        </div>
+
+     
+         
+        </div>
+      </div>
+  </div>
+</main>
+</div>
+
+<script>
+  $(document).ready(function() {
+  $('#periodoDe').inputmask('99/99/9999  99:99');
+  $('#periodoAte').inputmask('99/99/9999  99:99');
+  $('#celular').inputmask('(99) 99999-9999');
+  $('#telefone').inputmask('(99) 9999-9999');
+  $('#cpf').inputmask('999.999.999-99');
+  $('#rg').inputmask('99.999.999-9');
+  })
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+</body>
+
+<script type="module" src="firebase/solicitacao.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="/./node_modules/emailjs-com/dist/email.min.js"></script>
+</html>

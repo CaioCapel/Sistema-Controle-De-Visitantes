@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous" ></script>
+    <link rel="icon" type="image/png" href="Images/Logo P.png"/>
+    <link rel="stylesheet" href="CSS/login.css"/>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="login">
+          <form action="#" class="login-form">
+            <h2 class="title">Login</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" id="email" placeholder="Email"  />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" placeholder="Senha"  />
+            </div>
+            <h6>Não possui cadastro?
+              <a href="signup.html"><span id="cadastro">  Cadastre-se</span>
+              </a></h6>
+          </form>
+          <input class="btn solid" type="submit" id='login' name="login" value="Entrar" />
+
+          
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h1>
+             CADASTRO E MONITORAMENTO DE VISITANTES 
+            </h1>
+           
+          </div>
+          <img src="Images/logoBranco.png" class="image" alt="" />
+        </div>
+
+        <script src="firebase/login.js" type="module"></script>
+
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>Sign Up</title>
+<link rel="stylesheet" href="CSS/signup.css">
+<link rel="icon" type="image/png" href="Images/Logo P.png"/>
+</head>
+<body>
+  
+<div id="login-box">
+  <img class="img" src="Images/logo600x80.png" alt="">
+  <div class="div">
+    <h1>Cadastro de Funcionário</h1>
+    <select id="selectFuncao">
+      <option selected>Selecione a função</option>
+      <option>Gestor</option>
+      <option>Diretor</option>
+      <option>Funcionário</option>
+      <option>Portária</option>
+  </select>
+  <input type="text" id="username" name="username" placeholder="Nome de usuário" />
+    <input type="text" id="email" name="email" placeholder="E-mail" />
+    <input type="password" id="password" name="password" placeholder="Senha" />
+  </div>
+  <input type="submit" id='signUp' name="signup_submit" value="Cadastre-se" />
+  <a href="login.html"><input style="margin-top: 5px;" type="submit" id='Login' name="signup_submit" value="Login" /></a>
+
+</body>
+
+<script type="module" src="firebase/signup.js"></script>
+  
+</html>
