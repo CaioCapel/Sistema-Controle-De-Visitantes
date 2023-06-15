@@ -1,0 +1,149 @@
+
+/*FORMULÁRIO*/
+
+.container{
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.container2{
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.container main .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+main .fields .input-field{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.input-field label{
+    font-size: 14px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.input-field input, select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.container main button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 17px;
+    background-color: #f58634;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    font-weight: bold;
+}
+main button:hover{
+    background-color: #ff6a00;
+}
+textarea{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid black;
+    text-align: left;
+    resize: horizontal; 
+}
+
+/*FOTO*/
+
+input[type='file']{
+    display: none;
+}
+
+.imageContainer{
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    margin-left: 70%;
+}
+#imgPhoto{
+    width: 240px;
+    height: 240px;
+    margin-bottom: 10px;
+    align-self: center;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-left: 50px;
+}
+
+#imgPhoto:hover{
+    background-color: rgb(180, 180, 180);
+    border: 5px solid #111;
+    transition: 0.1s ease;
+}
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+@media (max-width:1601px){
+
+    #imgPhoto{
+        margin-right: 150px;
+    }
+}
+
+@media (max-width:1200px){
+    #imgPhoto{
+        width: 130px;
+        height: 130px;
+    }
+}
+@media (max-width:950px){
+    #imgPhoto{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
+
+@media (max-width:700px){
+    main .fields .input-field{
+        display: flex;
+        width: calc(100% / 1 - 15px);
+        flex-direction: column;
+        margin: 4px 0;
+    }
+      #imgPhoto{
+        display: none;
+      }
+}
+
