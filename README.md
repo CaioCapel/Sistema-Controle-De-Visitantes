@@ -1,10 +1,8 @@
 # TCC
 
-Projeto sendo desenvolvido para TCC de Técnico de Desenvolvimento de Sistemas na escola Senai Manuel Garcia Filho.
+Projeto desenvolvido para TCC de Técnico de Desenvolvimento de Sistemas na escola Senai Manuel Garcia Filho.
 
-https://ka1quegs.github.io/SCV/signup
-
-https://ka1quegs.github.io/SCV/login
+Login - https://caiocapel.github.io/Sistema-Controle-De-Visitantes/login.html
 
 
 
